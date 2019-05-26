@@ -25,7 +25,7 @@ fill(200, 200, 200);
 text("You: " + scoreII + " Your opponent: " + scoreI, 0, 10);
 xPos = xPos + xChange;
 yPos = yPos + yChange;
-xPosII = xPos;
+xPosII = xPos - 50;
 if(xPos > width){
 xChange = xChange * -1;
 sound.trigger();
