@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 public class DrumKit implements MouseListener {
 
 	JLabel drumLabelWithImage;
+	JLabel drumLabelWithImageII;
+	JLabel cymbalLabelWithImage;
 
 	public void run() throws MalformedURLException {
 
@@ -42,28 +44,35 @@ public class DrumKit implements MouseListener {
 		// Eclipse project under "default package".
 		//Done.
 		// 8. Put the name of your image file in a String variable.
-		String bassDrum = "https://i.pinimg.com/originals/fa/7e/d2/fa7ed2daff813c3c08f9442f46a98803.jpg";
+		String bassDrum = "bass drum.jpg";
 		// 9. Edit the next line to use your String variable
-		// drumLabelWithImage = createLabelImage(drumImageString);
+		drumLabelWithImage = createLabelImage(bassDrum);
 
 		// 10. Add the image to the panel
-
+		panel.add(drumLabelWithImage);
 		// 11. Set the layout of the panel to "new GridLayout()"
-
+		panel.setLayout(new GridLayout());
 		// 12. call the pack() method on the frame. Run your program. Do you see
 		// your drum image?
-
+		drumFrame.pack();
 		// 13. add this mouse listener to drumLabelWithImage
-
+		drumLabelWithImage.addMouseListener(this);
 		// 18. Add more images to make a drumkit. Remember to add this mouse
 		// listener to each one.
-
+		String snareDrum = "snare.jpg";
+		String cymbal = "cymbal.jpg";
+		drumLabelWithImageII = createLabelImage(snareDrum);
+		cymbalLabelWithImage = createLabelImage(cymbal);
+		drumLabelWithImageII.addMouseListener(this);
+		cymbalLabelWithImage.addMouseListener(this);
+		panel.add(drumLabelWithImageII);
+		panel.add(cymbalLabelWithImage);
+		drumFrame.pack();
 	}
 
 	public void mouseClicked(MouseEvent e) {
 		// 14. Print "mouse clicked" to the console. Run your program and watch
 		// the console to see when this is printed.
-
 		JLabel drumClicked = (JLabel) e.getSource(); // This line gets the label
 														// that the mouse
 														// clicked on
@@ -73,7 +82,13 @@ public class DrumKit implements MouseListener {
 		// leagueofamazing/code4life.
 
 		// 16. If they clicked on the drumImage...
-
+		if(drumClicked.equals(drumLabelWithImage)) {
+		playSound("bassDrum.wav");
+		}else if(drumClicked.equals(drumLabelWithImageII)) {
+		playSound("drum.wav");
+		}else if(drumClicked.equals(cymbalLabelWithImage)) {
+		playSound("cymbal.wav");
+		}
 		// 17. ...use the playSound method to play a drum sound. Test to see if
 		// it works
 
